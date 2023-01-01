@@ -1,0 +1,19 @@
+.landing-btn {
+  margin-top: 6rem;
+}
+
+.landing-btn button {
+  width: 383px;
+  height: 80.35px;
+  background: transparent;
+  border: 1px solid #ffffff;
+  border-radius: 20px;
+  font-family: 'Gowun Batang';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.875rem;
+  line-height: 43px;
+  text-align: center;
+  color: white;
+  margin: 0;
+}

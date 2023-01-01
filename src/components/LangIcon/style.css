@@ -1,0 +1,42 @@
+.lang-icon {
+  display: flex;
+  flex-direction: row;
+  color: white;
+  border: 2px solid #ababab;
+  outline: 1px solid #ababab;
+  outline-offset: 0.25rem;
+  border-radius: 1rem;
+  position: relative;
+  font-weight: 700;
+  font-size: 1.25rem;
+  height: 2.5rem;
+}
+
+.lang-icon div {
+  width: 4rem;
+  text-align: center;
+  cursor: pointer;
+  height: 100%;
+}
+
+.lang-icon span {
+  vertical-align: sub;
+}
+
+.lang-icon .lang-icon-left {
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  background-color: transparent;
+  border-right: 1px solid #ababab;
+}
+
+.lang-icon .lang-icon-right {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  background-color: transparent;
+  border-left: 1px solid #ababab;
+}
+
+.lang-icon .active {
+  background-color: #ababab;
+}

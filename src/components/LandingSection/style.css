@@ -1,0 +1,15 @@
+.landing-section {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.landing-section .background-img {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  position: absolute;
+  object-position: 50% 55%;
+}

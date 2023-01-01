@@ -1,0 +1,19 @@
+.landing-body {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  color: white;
+  flex-direction: column;
+  vertical-align: middle;
+  gap: 2rem;
+}
+
+.landing-body h1 {
+  font-size: 1.875rem;
+}
+
+.landing-body h2 {
+  font-size: 6rem;
+}
