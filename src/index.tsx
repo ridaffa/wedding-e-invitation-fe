@@ -5,15 +5,18 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { LangProvider } from './contexts/LangContexts';
+import { MobileProvider } from './contexts/MobileContext';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <LangProvider>
-        <App />
-      </LangProvider>
+      <MobileProvider>
+        <LangProvider>
+          <App />
+        </LangProvider>
+      </MobileProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

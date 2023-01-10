@@ -12,3 +12,13 @@
 .music-icon img {
   vertical-align: sub;
 }
+.music-icon.mobile {
+  bottom: 0.5rem;
+  width: 2.6rem;
+  height: 2.5rem;
+  margin-left: 1rem;
+}
+
+.music-icon.mobile img {
+  max-width: 2rem;
+}

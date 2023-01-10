@@ -1,13 +1,13 @@
 import LangConsumer from '../../contexts/LangContexts';
+import MobileConsumer from '../../contexts/MobileContext';
 import './style.css';
 
 export default function LandingDate() {
   const LangContext = LangConsumer();
-  const date =
-    LangContext.lang === 'id' ? '28 JANUARI 2023' : 'JANUARY 28th 2023';
+  const MobileContext = MobileConsumer();
   return (
-    <div className='landing-date'>
-      <h3>{date}</h3>
+    <div className={`landing-date ${MobileContext.mobile ? 'inactive' : ''}`}>
+      <h3>{LangContext.lang.header.date}</h3>
     </div>
   );
 }

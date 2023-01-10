@@ -13,3 +13,7 @@
   position: absolute;
   object-position: 50% 55%;
 }
+
+.background-img.mobile {
+  object-position: 75% 55%;
+}

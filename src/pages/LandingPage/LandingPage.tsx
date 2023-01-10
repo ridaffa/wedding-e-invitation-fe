@@ -4,34 +4,51 @@ import LandingBody from '../../components/LandingBody/intex';
 import LangMusic from '../../components/LangMusic';
 import LangIcon from '../../components/LangIcon';
 import MusicIcon from '../../components/MusicIcon';
+import MobileConsumer from '../../contexts/MobileContext';
+import Navigation from '../../components/Navigation';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { IGuest } from '../../interfaces/GuestInterface';
 export default function LandingPage() {
-  // type titleType = {
-  //   code: string;
-  //   title: string;
-  // };
-  // const titles: titleType[] = [
-  //   {
-  //     code: 'en',
-  //     title: 'WEDDING INVITATION',
-  //   },
-  //   {
-  //     code: 'id',
-  //     title: 'UNDANGAN PERNIKAHAN',
-  //   },
-  // ];
-  // const getTitle = (code: string) => {
-  //   const title = titles.find((title) => title.code === code);
-  //   return title?.title;
-  // };
-  // const [code, setCode] = useState('en');
-  // const title = getTitle(code);
+  const MobileContext = MobileConsumer();
+
+  const { uuid } = useParams();
+  const [guest, setGuest] = useState<IGuest>({
+    id: 0,
+    uuid: '',
+    fullname: '',
+    email: '',
+    phone_number: '',
+    address: '',
+    visit: false,
+  });
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_BE_URL}guests/${uuid}`).then((rs) => {
+      if (!rs.ok) {
+        alert('error');
+        return;
+      }
+      rs.json().then((data) => {
+        setGuest(data.data);
+        localStorage.setItem('guest', JSON.stringify(data.data));
+      });
+    });
+  }, [uuid]);
   return (
     <LandingSection>
-      <LangMusic>
-        <LangIcon></LangIcon>
-        <MusicIcon></MusicIcon>
-      </LangMusic>
+      <div
+        className={`${
+          MobileContext.mobile ? 'landing-components-inactive' : ''
+        }`}
+      >
+        <p>{guest.fullname}</p>
+        <LangMusic>
+          <LangIcon></LangIcon>
+          <MusicIcon></MusicIcon>
+        </LangMusic>
+      </div>
       <LandingBody></LandingBody>
+      <Navigation></Navigation>
     </LandingSection>
   );
 }
