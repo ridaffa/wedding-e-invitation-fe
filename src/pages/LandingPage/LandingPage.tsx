@@ -7,10 +7,11 @@ import MusicIcon from '../../components/MusicIcon';
 import MobileConsumer from '../../contexts/MobileContext';
 import Navigation from '../../components/Navigation';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { IGuest } from '../../interfaces/GuestInterface';
 export default function LandingPage() {
   const MobileContext = MobileConsumer();
+  const navigate = useNavigate();
 
   const { uuid } = useParams();
   const [guest, setGuest] = useState<IGuest>({
@@ -23,16 +24,21 @@ export default function LandingPage() {
     visit: false,
   });
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_BE_URL}guests/${uuid}`).then((rs) => {
-      if (!rs.ok) {
-        alert('error');
+    fetch(`${process.env.REACT_APP_BE_URL}guests/${uuid}`)
+      .then((rs) => {
+        if (!rs.ok) {
+          navigate('/');
+          return;
+        }
+        rs.json().then((data) => {
+          setGuest(data.data);
+          localStorage.setItem('guest', JSON.stringify(data.data));
+        });
+      })
+      .catch(() => {
+        navigate('/');
         return;
-      }
-      rs.json().then((data) => {
-        setGuest(data.data);
-        localStorage.setItem('guest', JSON.stringify(data.data));
       });
-    });
   }, [uuid]);
   return (
     <LandingSection>
@@ -48,7 +54,7 @@ export default function LandingPage() {
         </LangMusic>
       </div>
       <LandingBody></LandingBody>
-      <Navigation></Navigation>
+      <Navigation landingPage={true}></Navigation>
     </LandingSection>
   );
 }

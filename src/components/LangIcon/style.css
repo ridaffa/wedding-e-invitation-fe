@@ -20,10 +20,6 @@
   overflow: hidden;
 }
 
-.lang-icon span {
-  vertical-align: sub;
-}
-
 .lang-icon .lang-icon-left {
   border-top-left-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;

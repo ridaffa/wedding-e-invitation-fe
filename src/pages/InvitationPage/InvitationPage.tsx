@@ -52,7 +52,12 @@ import Paragraph from '../../components/Paragraph';
 import Span from '../../components/Span';
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
-import { IGuest } from '../../interfaces/GuestInterface';
+import { IGuest, IRsvp } from '../../interfaces/GuestInterface';
+import { IMessage, IMessageRequest } from '../../interfaces/MessageInterface';
+import {
+  IPagination,
+  IPaginationRes,
+} from '../../interfaces/PaginationInterface';
 
 export default function InvitationPage() {
   const [guest, setGuest] = useState<IGuest>({
@@ -64,16 +69,48 @@ export default function InvitationPage() {
     address: '',
     visit: false,
   });
+  const [reqPagination, setReqPagination] = useState<IPagination>({
+    page: 0,
+    size: 10,
+  });
+  const [message, setMessage] = useState<IMessageRequest>({
+    message: '',
+    guest_uuid: guest.uuid,
+    display_name: '',
+  });
+  const [messagesPag, setMessagesPag] = useState<IPaginationRes>(
+    {} as IPaginationRes
+  );
+  const [messages, setMessages] = useState<IMessage[]>([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     const guest = localStorage?.getItem('guest');
     if (guest) {
-      setGuest(JSON.parse(guest));
+      fetch(`${process.env.REACT_APP_BE_URL}guests/${JSON.parse(guest)?.uuid}`)
+        .then((rs) => {
+          if (!rs.ok) {
+            toast.error('error');
+            localStorage.removeItem('guest');
+            navigate('/');
+            return;
+          }
+          rs.json().then((data) => {
+            setGuest(data.data);
+            setMessage({ ...message, guest_uuid: data.data.uuid });
+            localStorage.setItem('guest', JSON.stringify(data.data));
+          });
+        })
+        .catch(() => {
+          toast.error('error');
+          localStorage.removeItem('guest');
+          navigate('/');
+        });
     } else {
       navigate('/');
     }
   }, []);
+  const [rsvp, setRsvp] = useState({} as IRsvp);
   const MobileContext = MobileConsumer();
   const LangContext = LangConsumer();
   const LangContent = LangContext.lang;
@@ -81,6 +118,101 @@ export default function InvitationPage() {
   const [hour, setHour] = useState(0);
   const [minute, setMinute] = useState(0);
   const [second, setSecond] = useState(0);
+
+  const handleInputMessage = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setMessage({ ...message, message: e.target.value });
+  };
+  const handleInputMessageName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setMessage({ ...message, display_name: e.target.value });
+  };
+  const fetchMessages = () => {
+    fetch(
+      `${process.env.REACT_APP_BE_URL}messages/search?page=${reqPagination.page}&size=${reqPagination.size}`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    )
+      .then((rs) => {
+        if (!rs.ok) {
+          toast.error('error');
+          return;
+        }
+        rs.json().then((data) => {
+          setMessages(data.data.items);
+          setMessagesPag(data.data);
+        });
+      })
+      .catch(() => {
+        toast.error('error');
+      });
+  };
+  useEffect(() => {
+    fetchMessages();
+  }, [reqPagination]);
+
+  const handleChangePage = (page: number) => {
+    setReqPagination({ ...reqPagination, page });
+  };
+
+  const handleSubmitMessage = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    fetch(`${process.env.REACT_APP_BE_URL}messages`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(message),
+    })
+      .then((res) => {
+        if (!res.ok) {
+          toast.error('error sending message');
+        }
+        return res.json();
+      })
+      .then(() => {
+        toast.success('success');
+        fetchMessages();
+      })
+      .catch(() => {
+        toast.error('error sending message');
+      });
+  };
+  const handleRsvp = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    fetch(`${process.env.REACT_APP_BE_URL}guests/${guest.uuid}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(rsvp),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.data === 'updated') {
+          toast.success('RSVP Success');
+        } else {
+          toast.error('RSVP Failed');
+        }
+      })
+      .catch(() => {
+        toast.error('RSVP Failed');
+      });
+  };
+  const handleInputRsvp = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    switch (e.currentTarget.value) {
+      case '1':
+        setRsvp({ ...rsvp, visit: true });
+        return;
+      default:
+        setRsvp({ ...rsvp, visit: false });
+    }
+  };
+  const handleInputRsvpAddress = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setRsvp({ ...rsvp, address: e.currentTarget.value });
+  };
   const handleCopy = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
     toast.info('Copied to clipboard');
     switch (e.currentTarget.id) {
@@ -122,8 +254,11 @@ export default function InvitationPage() {
         <LangIcon></LangIcon>
         {!MobileContext.mobile ? <MusicIcon></MusicIcon> : null}
       </LangMusic>
-      <Navigation></Navigation>
-      <section className={`heading ${MobileContext.mobile ? 'mobile' : ''}`}>
+      <Navigation landingPage={false}></Navigation>
+      <section
+        id='heading'
+        className={`heading ${MobileContext.mobile ? 'mobile' : ''}`}
+      >
         {!MobileContext.mobile ? (
           <div className='flower__top__left'>
             <img src={flowerTopLeft} alt='' />
@@ -176,6 +311,7 @@ export default function InvitationPage() {
         )}
       </section>
       <section
+        id='content'
         className={`inner-content ${MobileContext.mobile ? 'mobile' : ''}`}
       >
         <div className={`logo__uf ${MobileContext.mobile ? 'mobile' : ''}`}>
@@ -283,7 +419,7 @@ export default function InvitationPage() {
           </div>
         </div>
       </section>
-      <section className='story'>
+      <section id='story' className='story'>
         {!MobileContext.mobile ? (
           <div className='flower__story'>
             <img src={flowerStory} alt='' />
@@ -381,7 +517,7 @@ export default function InvitationPage() {
           </div>
         </div>
       </section>
-      <section className='date'>
+      <section id='date' className='date'>
         {!MobileContext.mobile ? (
           <div className='flower__date d-flex justify-content-between'>
             <img src={flowerDateLeft} alt='' />
@@ -452,7 +588,10 @@ export default function InvitationPage() {
           </div>
         </div>{' '}
       </section>
-      <section className={`countdown ${MobileContext.mobile ? 'mobile' : ''}`}>
+      <section
+        id='countdown'
+        className={`countdown ${MobileContext.mobile ? 'mobile' : ''}`}
+      >
         <div className='container-fluid countdown__container'>
           <div className='d-flex justify-content-center text-center'>
             {' '}
@@ -496,7 +635,10 @@ export default function InvitationPage() {
           </div>
         </div>
       </section>
-      <section className={`map ${MobileContext.mobile ? 'mobile' : ''}`}>
+      <section
+        id='map'
+        className={`map ${MobileContext.mobile ? 'mobile' : ''}`}
+      >
         {!MobileContext.mobile ? (
           <div className='flower__map__left'>
             <img src={flowerMapLeft} alt='' />
@@ -550,7 +692,7 @@ export default function InvitationPage() {
           </div>
         </div>
       </section>
-      <section className='rsvp'>
+      <section id='rsvp' className='rsvp'>
         {MobileContext.mobile ? (
           <div className='flower-mobile__rsvp d-flex justify-content-start'>
             <img src={mobileRsvpLeft} alt='' />
@@ -580,7 +722,10 @@ export default function InvitationPage() {
                 MobileContext.mobile ? 'mobile' : ''
               }`}
             >
-              <form className='d-flex justify-content-center flex-column'>
+              <form
+                className='d-flex justify-content-center flex-column'
+                onSubmit={handleRsvp}
+              >
                 <div className='form-group'>
                   <input
                     type='text'
@@ -597,19 +742,21 @@ export default function InvitationPage() {
                     type='address'
                     id='address'
                     placeholder={LangContent.rsvp.inputAddress}
+                    onChange={handleInputRsvpAddress}
                     defaultValue={guest.address}
                     required
                   />
                 </div>
                 <div className='form-group'>
-                  <select name='presence' id='sendgift' required>
+                  <select
+                    name='presence'
+                    id='presence'
+                    onChange={handleInputRsvp}
+                    required
+                  >
                     <option value=''>{LangContent.rsvp.selectAddress}</option>
-                    <option value='sendgift'>
-                      {LangContent.rsvp.selectOption1}
-                    </option>
-                    <option value='sendgift'>
-                      {LangContent.rsvp.selectOption2}
-                    </option>
+                    <option value='1'>{LangContent.rsvp.selectOption1}</option>
+                    <option value='0'>{LangContent.rsvp.selectOption2}</option>
                   </select>
                 </div>
                 <div className='form-group btn-container'>
@@ -623,6 +770,7 @@ export default function InvitationPage() {
         </div>
       </section>
       <section
+        id='healthProtocol'
         className={`health-protocol ${MobileContext.mobile ? 'mobile' : ''}`}
       >
         <div className='container'>
@@ -663,7 +811,10 @@ export default function InvitationPage() {
           </div>
         </div>
       </section>
-      <section className={`wedding-gift ${MobileContext.mobile && 'mobile'}`}>
+      <section
+        id='weddingGift'
+        className={`wedding-gift ${MobileContext.mobile && 'mobile'}`}
+      >
         <div className='container'>
           <div className='wedding-gift__content d-flex justify-content-center flex-column text-center'>
             <div className='wedding-gift__title'>
@@ -811,7 +962,10 @@ export default function InvitationPage() {
           </div>
         </div>
       </section>
-      <section className={`message ${MobileContext.mobile && 'mobile'}`}>
+      <section
+        id='message'
+        className={`message ${MobileContext.mobile && 'mobile'}`}
+      >
         {!MobileContext.mobile ? (
           <div className='flower__message d-flex justify-content-between'>
             <img src={flowerMessageLeft} alt='' />
@@ -841,119 +995,91 @@ export default function InvitationPage() {
             }`}
           >
             <div className='message__form'>
-              <form action=''>
+              <form onSubmit={handleSubmitMessage}>
                 <div className='form-group'>
                   <input
                     type='text'
                     className='form-control'
                     id='name'
                     placeholder={LangContent.message.inputName}
+                    onChange={handleInputMessageName}
                   />
                   <textarea
                     name='message'
-                    id=''
+                    id='message'
                     className='w-100'
                     rows={5}
                     placeholder={LangContent.message.inputMessage}
+                    onChange={handleInputMessage}
                   ></textarea>
                 </div>
-                <button>{LangContent.message.button}</button>
+                <button type='submit'>{LangContent.message.button}</button>
               </form>
             </div>
-            <div className='message__list d-flex flex-column'>
-              <div className='msg d-flex flex-column'>
-                <div className='msg__title'>
-                  <Span text='Nama Pengirim' />
-                </div>
-                <div className='msg__body'>
-                  <Span text='Pesan dari pengirim, selamat ya semoga sakinah mawaddah warrahmah aamiin cihuy maaf kalo kepanjangan.' />
-                </div>
-                <div className='msg__date'>
-                  <Span text='27 May 2022, 12:05' />
-                </div>
+            <div className='d-flex flex-column'>
+              <div className='message__list d-flex flex-column'>
+                {messages?.map((message: IMessage, index) => (
+                  <div className='msg d-flex flex-column' key={index}>
+                    <div className='msg__title'>
+                      <Span text={message.display_name} />
+                    </div>
+                    <div className='msg__body'>
+                      <Span text={message.message} />
+                    </div>
+                    <div className='msg__date'>
+                      <Span
+                        text={new Intl.DateTimeFormat('id-ID', {
+                          dateStyle: 'full',
+                          timeStyle: 'long',
+                        }).format(new Date(message.created_at))}
+                      />
+                    </div>
+                  </div>
+                ))}
               </div>
-              <div className='msg d-flex flex-column'>
-                <div className='msg__title'>
-                  <Span text='Nama Pengirim' />
-                </div>
-                <div className='msg__body'>
-                  <Span text='Pesan dari pengirim, selamat ya semoga sakinah mawaddah warrahmah aamiin cihuy maaf kalo kepanjangan.' />
-                </div>
-                <div className='msg__date'>
-                  <Span text='27 May 2022, 12:05' />
-                </div>
-              </div>
-              <div className='msg d-flex flex-column'>
-                <div className='msg__title'>
-                  <Span text='Nama Pengirim' />
-                </div>
-                <div className='msg__body'>
-                  <Span text='Pesan dari pengirim, selamat ya semoga sakinah mawaddah warrahmah aamiin cihuy maaf kalo kepanjangan.' />
-                </div>
-                <div className='msg__date'>
-                  <Span text='27 May 2022, 12:05' />
-                </div>
-              </div>
-              <div className='msg d-flex flex-column'>
-                <div className='msg__title'>
-                  <Span text='Nama Pengirim' />
-                </div>
-                <div className='msg__body'>
-                  <Span text='Pesan dari pengirim, selamat ya semoga sakinah mawaddah warrahmah aamiin cihuy maaf kalo kepanjangan.' />
-                </div>
-                <div className='msg__date'>
-                  <Span text='27 May 2022, 12:05' />
-                </div>
-              </div>
-              <div className='msg d-flex flex-column'>
-                <div className='msg__title'>
-                  <Span text='Nama Pengirim' />
-                </div>
-                <div className='msg__body'>
-                  <Span text='Pesan dari pengirim, selamat ya semoga sakinah mawaddah warrahmah aamiin cihuy maaf kalo kepanjangan.' />
-                </div>
-                <div className='msg__date'>
-                  <Span text='27 May 2022, 12:05' />
-                </div>
-              </div>
-              <div className='msg d-flex flex-column'>
-                <div className='msg__title'>
-                  <Span text='Nama Pengirim' />
-                </div>
-                <div className='msg__body'>
-                  <Span text='Pesan dari pengirim, selamat ya semoga sakinah mawaddah warrahmah aamiin cihuy maaf kalo kepanjangan.' />
-                </div>
-                <div className='msg__date'>
-                  <Span text='27 May 2022, 12:05' />
-                </div>
-              </div>
-              <div className='msg d-flex flex-column'>
-                <div className='msg__title'>
-                  <Span text='Nama Pengirim' />
-                </div>
-                <div className='msg__body'>
-                  <Span text='Pesan dari pengirim, selamat ya semoga sakinah mawaddah warrahmah aamiin cihuy maaf kalo kepanjangan.' />
-                </div>
-                <div className='msg__date'>
-                  <Span text='27 May 2022, 12:05' />
-                </div>
-              </div>
-              <div className='msg d-flex flex-column'>
-                <div className='msg__title'>
-                  <Span text='Nama Pengirim' />
-                </div>
-                <div className='msg__body'>
-                  <Span text='Pesan dari pengirim, selamat ya semoga sakinah mawaddah warrahmah aamiin cihuy maaf kalo kepanjangan.' />
-                </div>
-                <div className='msg__date'>
-                  <Span text='27 May 2022, 12:05' />
-                </div>
+              <div className='message__nav d-flex justify-content-center'>
+                {!(messagesPag.page + 1 === 1) ? (
+                  <span
+                    onClick={() => {
+                      handleChangePage(0);
+                    }}
+                  >{`<<`}</span>
+                ) : null}
+                {!(messagesPag.page + 1 === 1) ? (
+                  <span
+                    onClick={() => {
+                      handleChangePage(messagesPag.page - 1);
+                    }}
+                  >
+                    {messagesPag.page}
+                  </span>
+                ) : null}
+                {<span>{messagesPag.page + 1}</span>}
+                {!(messagesPag.page + 1 === messagesPag.total_pages) ? (
+                  <span
+                    onClick={() => {
+                      handleChangePage(messagesPag.page + 1);
+                    }}
+                  >
+                    {messagesPag.page + 2}
+                  </span>
+                ) : null}
+                {!(messagesPag.page + 1 === messagesPag.total_pages) ? (
+                  <span
+                    onClick={() => {
+                      handleChangePage(messagesPag.total_pages - 1);
+                    }}
+                  >{`>>`}</span>
+                ) : null}
               </div>
             </div>
           </div>
         </div>
       </section>
-      <section className={`surah ${MobileContext.mobile && 'mobile'}`}>
+      <section
+        id='surah'
+        className={`surah ${MobileContext.mobile && 'mobile'}`}
+      >
         <div className='container-fluid surah__container'>
           <div className='surah__text d-flex position-absolute flex-column'>
             <Paragraph
@@ -972,7 +1098,10 @@ export default function InvitationPage() {
           />
         </div>
       </section>
-      <footer className={`footer ${MobileContext.mobile && 'mobile'}`}>
+      <footer
+        id='footer'
+        className={`footer ${MobileContext.mobile && 'mobile'}`}
+      >
         <div className='footer__content d-flex justify-content-center'>
           <span>Powered By</span>
           <span

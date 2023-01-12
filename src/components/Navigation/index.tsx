@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 import heartIcon from '../../assets/heart.png';
 import dateIcon from '../../assets/date.png';
 import mapsIcon from '../../assets/maps.png';
@@ -8,40 +8,43 @@ import giftIcon from '../../assets/gift.png';
 import './style.css';
 import MobileConsumer from '../../contexts/MobileContext';
 
-export default function Navigation() {
+export default function Navigation(props: { landingPage: boolean }) {
   const MobileContext = MobileConsumer();
   return (
     <div>
       <div className={`navigation-1 ${MobileContext.mobile ? 'inactive' : ''}`}>
         <ul>
           <li>
-            <NavLink to={'/invitation'}>
+            <HashLink
+              smooth
+              to={props.landingPage ? '/invitation' : '#weddingGift'}
+            >
               <div>
                 <img src={giftIcon} alt='' />
               </div>
-            </NavLink>
+            </HashLink>
           </li>
         </ul>
       </div>
       <div className={`navigation ${MobileContext.mobile ? 'inactive' : ''}`}>
         <ul>
           <li>
-            <NavLink to={'/invitation'}>
+            <HashLink smooth to={props.landingPage ? '/invitation' : '#story'}>
               <div>
                 <img src={heartIcon} alt='' />
               </div>
-            </NavLink>
+            </HashLink>
           </li>
           <li>
-            <NavLink to={'/invitation'}>
+            <HashLink smooth to={props.landingPage ? '/invitation' : '#date'}>
               {' '}
               <div>
                 <img src={dateIcon} alt='' />
               </div>
-            </NavLink>
+            </HashLink>
           </li>{' '}
           <li>
-            <NavLink to={'/invitation'}>
+            <HashLink smooth to={props.landingPage ? '/invitation' : '#map'}>
               {' '}
               <div>
                 <span>
@@ -49,10 +52,13 @@ export default function Navigation() {
                   <img src={mapsIcon} alt='' />
                 </span>
               </div>
-            </NavLink>
+            </HashLink>
           </li>{' '}
           <li>
-            <NavLink to={'/invitation'}>
+            <HashLink
+              smooth
+              to={props.landingPage ? '/invitation' : '#message'}
+            >
               {' '}
               <div>
                 <span>
@@ -60,7 +66,7 @@ export default function Navigation() {
                   <img src={mailIcon} alt='' />
                 </span>
               </div>
-            </NavLink>
+            </HashLink>
           </li>{' '}
         </ul>
       </div>
