@@ -1037,41 +1037,43 @@ export default function InvitationPage() {
                   </div>
                 ))}
               </div>
-              <div className='message__nav d-flex justify-content-center'>
-                {!(messagesPag.page + 1 === 1) ? (
-                  <span
-                    onClick={() => {
-                      handleChangePage(0);
-                    }}
-                  >{`<<`}</span>
-                ) : null}
-                {!(messagesPag.page + 1 === 1) ? (
-                  <span
-                    onClick={() => {
-                      handleChangePage(messagesPag.page - 1);
-                    }}
-                  >
-                    {messagesPag.page}
-                  </span>
-                ) : null}
-                {<span>{messagesPag.page + 1}</span>}
-                {!(messagesPag.page + 1 === messagesPag.total_pages) ? (
-                  <span
-                    onClick={() => {
-                      handleChangePage(messagesPag.page + 1);
-                    }}
-                  >
-                    {messagesPag.page + 2}
-                  </span>
-                ) : null}
-                {!(messagesPag.page + 1 === messagesPag.total_pages) ? (
-                  <span
-                    onClick={() => {
-                      handleChangePage(messagesPag.total_pages - 1);
-                    }}
-                  >{`>>`}</span>
-                ) : null}
-              </div>
+              {messagesPag.visible ? (
+                <div className='message__nav d-flex justify-content-center'>
+                  {!(messagesPag.page + 1 === 1) ? (
+                    <span
+                      onClick={() => {
+                        handleChangePage(0);
+                      }}
+                    >{`<<`}</span>
+                  ) : null}
+                  {!(messagesPag.page + 1 === 1) ? (
+                    <span
+                      onClick={() => {
+                        handleChangePage(messagesPag.page - 1);
+                      }}
+                    >
+                      {messagesPag.page}
+                    </span>
+                  ) : null}
+                  {<span>{messagesPag.page + 1}</span>}
+                  {!(messagesPag.page + 1 === messagesPag.total_pages) ? (
+                    <span
+                      onClick={() => {
+                        handleChangePage(messagesPag.page + 1);
+                      }}
+                    >
+                      {messagesPag.page + 2}
+                    </span>
+                  ) : null}
+                  {!(messagesPag.page + 1 === messagesPag.total_pages) ? (
+                    <span
+                      onClick={() => {
+                        handleChangePage(messagesPag.total_pages - 1);
+                      }}
+                    >{`>>`}</span>
+                  ) : null}
+                </div>
+              ) : null}
             </div>
           </div>
         </div>

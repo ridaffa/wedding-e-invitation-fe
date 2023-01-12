@@ -442,41 +442,43 @@ export default function AdminDashboard() {
             </div>
           </div>
           <div className='row'>
-            <div className='message__nav d-flex justify-content-center'>
-              {!(guestsPag.page + 1 === 1) ? (
-                <span
-                  onClick={() => {
-                    handleChangePage(0);
-                  }}
-                >{`<<`}</span>
-              ) : null}
-              {!(guestsPag.page + 1 === 1) ? (
-                <span
-                  onClick={() => {
-                    handleChangePage(guestsPag.page - 1);
-                  }}
-                >
-                  {guestsPag.page}
-                </span>
-              ) : null}
-              {<span>{guestsPag.page + 1}</span>}
-              {!(guestsPag.page + 1 === guestsPag.total_pages) ? (
-                <span
-                  onClick={() => {
-                    handleChangePage(guestsPag.page + 1);
-                  }}
-                >
-                  {guestsPag.page + 2}
-                </span>
-              ) : null}
-              {!(guestsPag.page + 1 === guestsPag.total_pages) ? (
-                <span
-                  onClick={() => {
-                    handleChangePage(guestsPag.total_pages - 1);
-                  }}
-                >{`>>`}</span>
-              ) : null}
-            </div>
+            {guestsPag.visible ? (
+              <div className='message__nav d-flex justify-content-center'>
+                {!(guestsPag.page + 1 === 1) ? (
+                  <span
+                    onClick={() => {
+                      handleChangePage(0);
+                    }}
+                  >{`<<`}</span>
+                ) : null}
+                {!(guestsPag.page + 1 === 1) ? (
+                  <span
+                    onClick={() => {
+                      handleChangePage(guestsPag.page - 1);
+                    }}
+                  >
+                    {guestsPag.page}
+                  </span>
+                ) : null}
+                {<span>{guestsPag.page + 1}</span>}
+                {!(guestsPag.page + 1 === guestsPag.total_pages) ? (
+                  <span
+                    onClick={() => {
+                      handleChangePage(guestsPag.page + 1);
+                    }}
+                  >
+                    {guestsPag.page + 2}
+                  </span>
+                ) : null}
+                {!(guestsPag.page + 1 === guestsPag.total_pages) ? (
+                  <span
+                    onClick={() => {
+                      handleChangePage(guestsPag.total_pages - 1);
+                    }}
+                  >{`>>`}</span>
+                ) : null}
+              </div>
+            ) : null}
           </div>
         </div>
       </section>
