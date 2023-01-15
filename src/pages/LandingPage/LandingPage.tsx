@@ -47,7 +47,6 @@ export default function LandingPage() {
           MobileContext.mobile ? 'landing-components-inactive' : ''
         }`}
       >
-        <p>{guest.fullname}</p>
         <LangMusic>
           <LangIcon></LangIcon>
           <MusicIcon></MusicIcon>

@@ -8,7 +8,6 @@ body {
   line-height: 1.8;
   font-weight: normal;
   background: #f8f9fd;
-  color: lighten(black, 50%);
 }
 a {
   transition: 0.3s all ease;
@@ -19,21 +18,6 @@ a {
     outline: none !important;
     box-shadow: none;
   }
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-.h1,
-.h2,
-.h3,
-.h4,
-.h5 {
-  line-height: 1.5;
-  font-weight: 400;
-  font-family: $primary;
-  color: black;
 }
 
 .bg-primary {
