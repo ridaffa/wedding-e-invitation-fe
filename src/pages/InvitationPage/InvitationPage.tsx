@@ -40,6 +40,7 @@ import mobileStoryRight from '../../assets/mobile-story-right.png';
 import mobileDateRight from '../../assets/mobile-date-right.png';
 import mobileDateLeft from '../../assets/mobile-date-left.png';
 import mobileRsvpLeft from '../../assets/mobile-rsvp-left.png';
+import { Fade } from 'react-awesome-reveal';
 
 import './style.scss';
 import LangConsumer from '../../contexts/LangContexts';
@@ -52,6 +53,7 @@ import Paragraph from '../../components/Paragraph';
 import Span from '../../components/Span';
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+
 import { IGuest, IRsvp } from '../../interfaces/GuestInterface';
 import { IMessage, IMessageRequest } from '../../interfaces/MessageInterface';
 import {
@@ -271,26 +273,38 @@ export default function InvitationPage() {
         )}
         <div className='container z-2'>
           <div className='heading__content d-flex justify-content-center align-items-center flex-column'>
-            <SubHeadingText
-              fontSize={MobileContext.mobile ? '0.875rem' : '1.875rem'}
-              text={LangContent.header.title}
-              fontWeight={MobileContext.mobile ? 700 : 400}
-            ></SubHeadingText>
-            <HeadingText
-              fontSize={MobileContext.mobile ? '2.5rem' : '7.5rem'}
-              fontWeight={700}
-              text={'UTI'}
-            ></HeadingText>
-            <HeadingText
-              fontSize={MobileContext.mobile ? '1.25rem' : '5rem'}
-              fontWeight={700}
-              text={'&'}
-            ></HeadingText>
-            <HeadingText
-              fontWeight={700}
-              fontSize={MobileContext.mobile ? '2.5rem' : '7.5rem'}
-              text={'FAISAL'}
-            ></HeadingText>
+            <Fade>
+              {' '}
+              <SubHeadingText
+                fontSize={MobileContext.mobile ? '0.875rem' : '1.875rem'}
+                text={LangContent.header.title}
+                fontWeight={MobileContext.mobile ? 700 : 400}
+              ></SubHeadingText>
+            </Fade>
+            <Fade>
+              <HeadingText
+                fontSize={MobileContext.mobile ? '2.5rem' : '7.5rem'}
+                fontWeight={700}
+                text={'UTI'}
+              ></HeadingText>
+            </Fade>
+            <Fade>
+              {' '}
+              <HeadingText
+                fontSize={MobileContext.mobile ? '1.25rem' : '5rem'}
+                fontWeight={700}
+                text={'&'}
+              ></HeadingText>
+            </Fade>
+
+            <Fade>
+              {' '}
+              <HeadingText
+                fontWeight={700}
+                fontSize={MobileContext.mobile ? '2.5rem' : '7.5rem'}
+                text={'FAISAL'}
+              ></HeadingText>
+            </Fade>
             <div className={`${MobileContext.mobile ? 'mt-2' : 'mt-6'}`}>
               <SubHeadingText
                 fontSize={MobileContext.mobile ? '0.75rem' : '1.875rem'}
@@ -299,6 +313,7 @@ export default function InvitationPage() {
             </div>
           </div>
         </div>
+
         {!MobileContext.mobile ? (
           <div className='flower__bottom__right__header'>
             <img src={flowerCombined} alt='' />
@@ -338,7 +353,11 @@ export default function InvitationPage() {
               MobileContext.mobile ? 'flex-column' : 'flex-row'
             }`}
           >
-            <img src={utiPhoto} alt='' />
+            <Fade direction='left'>
+              {' '}
+              <img src={utiPhoto} alt='' />
+            </Fade>
+
             {MobileContext.mobile ? (
               <div className='poeple-description-mobile row row-cols-3'>
                 <div className='col-5 text-end'>
@@ -363,7 +382,10 @@ export default function InvitationPage() {
                 </div>
               </div>
             ) : null}
-            <img src={faishalPhoto} alt='' />
+            <Fade direction='left' delay={650}>
+              {' '}
+              <img src={faishalPhoto} alt='' />
+            </Fade>
           </div>
         </div>
         {!MobileContext.mobile ? (

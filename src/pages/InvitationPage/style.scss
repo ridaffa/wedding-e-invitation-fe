@@ -53,9 +53,8 @@
   .people-photo {
     position: relative;
     img {
-      max-width: 50%;
-      height: auto;
-      width: auto;
+      height: 100%;
+      width: 100%;
     }
     .poeple-description-mobile {
       position: absolute;
@@ -71,9 +70,8 @@
     }
     &.mobile {
       img {
-        max-width: 80%;
-        height: auto;
-        width: auto;
+        height: 100%;
+        width: 100%;
       }
       .d-flex {
         gap: 1rem;
