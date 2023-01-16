@@ -3,8 +3,6 @@ import LangIcon from '../../components/LangIcon';
 import LangMusic from '../../components/LangMusic';
 import MusicIcon from '../../components/MusicIcon';
 import Navigation from '../../components/Navigation';
-import flowerMessageRight from '../../assets/flower-message-right.png';
-import mobileHeaderBottomRight from '../../assets/mobile-header-bottom-right.png';
 import { Fade } from 'react-awesome-reveal';
 
 import './style.scss';
@@ -304,7 +302,10 @@ export default function InvitationPage() {
               src={`${process.env.REACT_APP_FE_CDN}mobile-header-bottom-left.png`}
               alt=''
             />
-            <img src={mobileHeaderBottomRight} alt='' />
+            <img
+              src={`${process.env.REACT_APP_FE_CDN}mobile-header-bottom-right.png`}
+              alt=''
+            />
           </div>
         )}
       </section>
@@ -1120,7 +1121,10 @@ export default function InvitationPage() {
               src={`${process.env.REACT_APP_FE_CDN}flower-message-left.png`}
               alt=''
             />
-            <img src={flowerMessageRight} alt='' />
+            <img
+              src={`${process.env.REACT_APP_FE_CDN}flower-message-right.png`}
+              alt=''
+            />
           </div>
         ) : (
           <div className='flower-mobile__message d-flex justify-content-between'>
