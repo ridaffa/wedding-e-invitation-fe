@@ -15,7 +15,7 @@ export const LangId: ILang = {
     body: "Dengan nama Allah SWT Yang Maha Pengasih dan Maha Penyayang, dengan memohon rahmat dan ridha Allah SWT, dengan hormat kami mengharapkan kehadiran Anda pada acara pernikahan kami,",
     womanDesc: "Putri dari Bapak Yayat Ruhiat dan Ibu Rina Marlina",
     manDesc: "Putra dari Bapak Mokhamad Heriyanto (Alm) dan Ibu Ratnawati Djajanegara",
-    footerBody: "Suatu kehormatan dan kebahagiaan besar bagi kami jika keluarga dan kerabat berkenan hadir untuk memberikan doa dan restu untuk pernikahan kami.",
+    footerBody: "Merupakan suatu kebahagiaan bagi kami jika Bapak/Ibu/Saudara/i berkenan menghadiri undangan kami.",
   },
   story: {
     title: "Our Love Story",

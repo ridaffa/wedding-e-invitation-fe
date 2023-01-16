@@ -1,4 +1,3 @@
-import LandingLogoMobileImg from '../../assets/landing-logo-mobile.png';
 import MobileConsumer from '../../contexts/MobileContext';
 import './style.css';
 
@@ -8,7 +7,10 @@ export default function LandingLogoMobile() {
     <div
       className={`landing-logo-mobile ${MobileContext.mobile ? 'active' : ''}`}
     >
-      <img src={LandingLogoMobileImg} alt='' />
+      <img
+        src={`${process.env.REACT_APP_FE_CDN}landing-logo-mobile.png`}
+        alt=''
+      />
     </div>
   );
 }

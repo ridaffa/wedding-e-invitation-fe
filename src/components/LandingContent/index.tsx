@@ -7,7 +7,7 @@ export default function LandingContent() {
     <div className={`landing-content ${MobileContext.mobile ? 'mobile' : ''}`}>
       <h1>UTI</h1>
       <h1>&nbsp;&&nbsp;</h1>
-      <h1>FAISAL</h1>
+      <h1>FAISHAL</h1>
     </div>
   );
 }
