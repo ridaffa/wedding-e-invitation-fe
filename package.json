@@ -30,7 +30,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && cp build/* /var/html/uti-faishal -r",
+    "build": "react-scripts build && cp build/* /var/www/uti-faishal -r",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

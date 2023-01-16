@@ -53,7 +53,7 @@ export default function LandingPage() {
           <MusicIcon></MusicIcon>
         </LangMusic>
       </div>
-      <LandingBody></LandingBody>
+      <LandingBody name={guest.fullname} title={guest.title}></LandingBody>
       <Navigation landingPage={true}></Navigation>
     </LandingSection>
   );

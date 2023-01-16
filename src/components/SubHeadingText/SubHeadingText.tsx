@@ -5,9 +5,9 @@ export default function SubHeadingText(props: {
 }) {
   return (
     <div>
-      <h2 style={{ fontWeight: props.fontWeight, fontSize: props.fontSize }}>
+      <p style={{ fontWeight: props.fontWeight, fontSize: props.fontSize }}>
         {props.text}
-      </h2>
+      </p>
     </div>
   );
 }

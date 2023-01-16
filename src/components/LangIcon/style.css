@@ -13,6 +13,7 @@
 }
 
 .lang-icon div {
+  padding-top: 3px;
   width: 4rem;
   text-align: center;
   cursor: pointer;

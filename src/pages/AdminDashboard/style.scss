@@ -1,14 +1,6 @@
 $primary: #40bfc1;
 $success: #64e291;
 $warning: #f6d365;
-
-body {
-  font-family: $primary;
-  font-size: 16px;
-  line-height: 1.8;
-  font-weight: normal;
-  background: #f8f9fd;
-}
 a {
   transition: 0.3s all ease;
   color: $primary;

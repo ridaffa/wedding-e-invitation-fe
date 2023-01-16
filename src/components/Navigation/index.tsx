@@ -11,7 +11,7 @@ import MobileConsumer from '../../contexts/MobileContext';
 export default function Navigation(props: { landingPage: boolean }) {
   const MobileContext = MobileConsumer();
   return (
-    <div>
+    <div className='container-navigation'>
       <div className={`navigation-1 ${MobileContext.mobile ? 'inactive' : ''}`}>
         <ul>
           <li>

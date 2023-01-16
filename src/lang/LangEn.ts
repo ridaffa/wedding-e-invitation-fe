@@ -3,7 +3,8 @@ import { ILang } from "./LangInterface";
 export const LangEn: ILang = {
   landing: {
     title: "WEDDING INVITATION",
-    button: 'Buka Undangan'
+    button: 'Open Invitation',
+    yth: 'To Mr./Mrs./Miss'
   },
   header: {
     title: "THE WEDDING OF",

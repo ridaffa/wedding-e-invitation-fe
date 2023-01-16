@@ -1,6 +1,4 @@
 import './style.css';
-import cover from '../../assets/Foto/cover.jpg';
-import converMobile from '../../assets/Foto/cover-mobile.png';
 import MobileConsumer from '../../contexts/MobileContext';
 
 export default function LandingSection(props: { children: React.ReactNode }) {
@@ -9,7 +7,11 @@ export default function LandingSection(props: { children: React.ReactNode }) {
     <div className='landing-section'>
       <img
         className={`background-img ${MobileContext.mobile ? 'mobile' : ''}`}
-        src={`${MobileContext.mobile ? converMobile : cover}`}
+        src={`${
+          MobileContext.mobile
+            ? `${process.env.REACT_APP_FE_CDN}foto/cover-mobile.png`
+            : `${process.env.REACT_APP_FE_CDN}foto/cover.jpg`
+        }`}
         alt='Uti dan Faisal'
       />
       {props.children}

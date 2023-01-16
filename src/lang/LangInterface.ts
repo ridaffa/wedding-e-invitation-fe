@@ -2,6 +2,7 @@ export interface ILang {
   landing: {
     title: string;
     button: string;
+    yth: string;
   }
   header: {
     title: string;

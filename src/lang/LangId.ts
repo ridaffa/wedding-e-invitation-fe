@@ -3,7 +3,8 @@ import { ILang } from "./LangInterface";
 export const LangId: ILang = {
   landing: {
     title: "UNDANGAN PERNIKAHAN",
-    button: 'Buka Undangan'
+    button: 'Buka Undangan',
+    yth: 'Kepada Yth. Bapak/Ibu/Saudara/i'
   },
   header: {
     title: "UNDANGAN PERNIKAHAN",

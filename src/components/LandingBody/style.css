@@ -7,7 +7,7 @@
   color: white;
   flex-direction: column;
   vertical-align: middle;
-  gap: 2rem;
+  gap: 0vw;
 }
 
 .landing-body h1 {
@@ -24,4 +24,8 @@
 
 .landing-body.active-lang {
   display: block;
+}
+
+.landing-greet {
+  text-align: center;
 }
