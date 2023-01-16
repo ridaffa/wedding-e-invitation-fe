@@ -276,6 +276,15 @@ export default function AdminDashboard() {
                       required
                     />
                     <input
+                      id='title'
+                      type='text'
+                      placeholder='Title'
+                      className='form-control mb-2'
+                      onChange={handleInputCreate}
+                      defaultValue={createGuest.title}
+                      required
+                    />
+                    <input
                       id='email'
                       type={'email'}
                       placeholder='Email'
@@ -326,6 +335,7 @@ export default function AdminDashboard() {
                     <tr>
                       <th>&nbsp;</th>
                       <th>Full Name</th>
+                      <th>Title</th>
                       <th>Email</th>
                       <th>Phone Number</th>
                       <th>Address</th>
@@ -377,6 +387,18 @@ export default function AdminDashboard() {
                             ></input>
                           ) : (
                             <span>{guest.fullname}</span>
+                          )}
+                        </td>
+                        <td>
+                          {updateGuest.id === guest.id ? (
+                            <input
+                              type='text'
+                              value={updateGuest.title}
+                              id='title'
+                              onChange={changeInput}
+                            ></input>
+                          ) : (
+                            <span>{guest.title}</span>
                           )}
                         </td>
                         <td>

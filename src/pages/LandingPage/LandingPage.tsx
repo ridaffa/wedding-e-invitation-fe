@@ -21,6 +21,7 @@ export default function LandingPage() {
     email: '',
     phone_number: '',
     address: '',
+    title: '',
     visit: false,
   });
   useEffect(() => {

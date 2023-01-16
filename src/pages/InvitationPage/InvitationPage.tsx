@@ -69,6 +69,7 @@ export default function InvitationPage() {
     email: '',
     phone_number: '',
     address: '',
+    title: '',
     visit: false,
   });
   const [reqPagination, setReqPagination] = useState<IPagination>({

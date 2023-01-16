@@ -5,6 +5,7 @@ export interface IGuest {
   address: string
   phone_number: string
   email: string
+  title: string
   visit: boolean
 }
 
@@ -12,6 +13,7 @@ export interface ICreateGuest {
   fullname: string
   address: string
   phone_number: string
+  title: string
   email: string
 }
 
