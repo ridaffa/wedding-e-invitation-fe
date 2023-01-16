@@ -1044,7 +1044,12 @@ export default function InvitationPage() {
                       </div>
                       <div className='col-9 text-start'>
                         <Fade direction='left'>
-                          <Paragraph fontSize={'1.563vw'} text={'BNI'} />
+                          <Paragraph
+                            fontSize={` ${
+                              MobileContext.mobile ? '0.75rem' : '1.563vw'
+                            }`}
+                            text={'BNI'}
+                          />
                           <Span
                             fontSize={` ${
                               MobileContext.mobile ? '0.75rem' : '1.563vw'
