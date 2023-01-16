@@ -9,8 +9,8 @@ export default function LandingSection(props: { children: React.ReactNode }) {
         className={`background-img ${MobileContext.mobile ? 'mobile' : ''}`}
         src={`${
           MobileContext.mobile
-            ? `${process.env.REACT_APP_FE_CDN}foto/cover-mobile.png`
-            : `${process.env.REACT_APP_FE_CDN}foto/cover.jpg`
+            ? `${process.env.REACT_APP_FE_CDN}images/foto/cover-mobile.png`
+            : `${process.env.REACT_APP_FE_CDN}images/foto/cover.jpg`
         }`}
         alt='Uti dan Faisal'
       />

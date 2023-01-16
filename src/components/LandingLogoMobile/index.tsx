@@ -8,7 +8,7 @@ export default function LandingLogoMobile() {
       className={`landing-logo-mobile ${MobileContext.mobile ? 'active' : ''}`}
     >
       <img
-        src={`${process.env.REACT_APP_FE_CDN}landing-logo-mobile.png`}
+        src={`${process.env.REACT_APP_FE_CDN}images/landing-logo-mobile.png`}
         alt=''
       />
     </div>

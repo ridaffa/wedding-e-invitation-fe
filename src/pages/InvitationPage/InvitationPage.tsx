@@ -228,7 +228,7 @@ export default function InvitationPage() {
         {!MobileContext.mobile ? (
           <div className='flower__top__left'>
             <img
-              src={`${process.env.REACT_APP_FE_CDN}flower-top-left.png`}
+              src={`${process.env.REACT_APP_FE_CDN}images/flower-top-left.png`}
               alt=''
             />
           </div>
@@ -236,13 +236,13 @@ export default function InvitationPage() {
         {!MobileContext.mobile ? (
           <img
             className='background-img'
-            src={`${process.env.REACT_APP_FE_CDN}desktop-cover-invitation.png`}
+            src={`${process.env.REACT_APP_FE_CDN}images/desktop-cover-invitation.png`}
             alt=''
           />
         ) : (
           <img
             className='background-img'
-            src={`${process.env.REACT_APP_FE_CDN}mobile-cover.jpeg`}
+            src={`${process.env.REACT_APP_FE_CDN}images/mobile-cover.jpeg`}
             alt=''
           />
         )}
@@ -292,18 +292,18 @@ export default function InvitationPage() {
         {!MobileContext.mobile ? (
           <div className='flower__bottom__right__header'>
             <img
-              src={`${process.env.REACT_APP_FE_CDN}flower-combined.png`}
+              src={`${process.env.REACT_APP_FE_CDN}images/flower-combined.png`}
               alt=''
             />
           </div>
         ) : (
           <div className='flower-mobile__bottom__header'>
             <img
-              src={`${process.env.REACT_APP_FE_CDN}mobile-header-bottom-left.png`}
+              src={`${process.env.REACT_APP_FE_CDN}images/mobile-header-bottom-left.png`}
               alt=''
             />
             <img
-              src={`${process.env.REACT_APP_FE_CDN}mobile-header-bottom-right.png`}
+              src={`${process.env.REACT_APP_FE_CDN}images/mobile-header-bottom-right.png`}
               alt=''
             />
           </div>
@@ -315,7 +315,7 @@ export default function InvitationPage() {
       >
         <div className={`logo__uf ${MobileContext.mobile ? 'mobile' : ''}`}>
           <img
-            src={`${process.env.REACT_APP_FE_CDN}landing-logo-mobile.png`}
+            src={`${process.env.REACT_APP_FE_CDN}images/landing-logo-mobile.png`}
             alt=''
           />
         </div>
@@ -344,7 +344,10 @@ export default function InvitationPage() {
           >
             <Fade direction='left'>
               {' '}
-              <img src={`${process.env.REACT_APP_FE_CDN}Uti.png`} alt='' />
+              <img
+                src={`${process.env.REACT_APP_FE_CDN}images/Uti.png`}
+                alt=''
+              />
             </Fade>
             {MobileContext.mobile ? (
               <div className='poeple-description-mobile row row-cols-3'>
@@ -372,7 +375,10 @@ export default function InvitationPage() {
             ) : null}
             <Fade direction='right'>
               {' '}
-              <img src={`${process.env.REACT_APP_FE_CDN}Faishal.png`} alt='' />
+              <img
+                src={`${process.env.REACT_APP_FE_CDN}images/Faishal.png`}
+                alt=''
+              />
             </Fade>
           </div>
         </div>
@@ -419,7 +425,7 @@ export default function InvitationPage() {
         {!MobileContext.mobile ? (
           <div className='flower__separator'>
             <img
-              src={`${process.env.REACT_APP_FE_CDN}flower-separator.png`}
+              src={`${process.env.REACT_APP_FE_CDN}images/flower-separator.png`}
               alt=''
             />
           </div>
@@ -438,18 +444,18 @@ export default function InvitationPage() {
         {!MobileContext.mobile ? (
           <div className='flower__story'>
             <img
-              src={`${process.env.REACT_APP_FE_CDN}flower-story.png`}
+              src={`${process.env.REACT_APP_FE_CDN}images/flower-story.png`}
               alt=''
             />
           </div>
         ) : (
           <div className='flower-mobile__story'>
             <img
-              src={`${process.env.REACT_APP_FE_CDN}mobile-story-left.png`}
+              src={`${process.env.REACT_APP_FE_CDN}images/mobile-story-left.png`}
               alt=''
             />
             <img
-              src={`${process.env.REACT_APP_FE_CDN}mobile-story-right.png`}
+              src={`${process.env.REACT_APP_FE_CDN}images/mobile-story-right.png`}
               alt=''
             />
           </div>
@@ -487,11 +493,11 @@ export default function InvitationPage() {
               {!MobileContext.mobile ? null : (
                 <div className='flower-mobile__story__second'>
                   <img
-                    src={`${process.env.REACT_APP_FE_CDN}mobile-story-left.png`}
+                    src={`${process.env.REACT_APP_FE_CDN}images/mobile-story-left.png`}
                     alt=''
                   />
                   <img
-                    src={`${process.env.REACT_APP_FE_CDN}mobile-story-right.png`}
+                    src={`${process.env.REACT_APP_FE_CDN}images/mobile-story-right.png`}
                     alt=''
                   />
                 </div>
@@ -503,7 +509,7 @@ export default function InvitationPage() {
                 />
                 {MobileContext.mobile ? (
                   <img
-                    src={`${process.env.REACT_APP_FE_CDN}mobile-love-story-1.png`}
+                    src={`${process.env.REACT_APP_FE_CDN}images/mobile-love-story-1.png`}
                     alt=''
                   />
                 ) : null}
@@ -528,7 +534,7 @@ export default function InvitationPage() {
                 <Fade direction='left'>
                   <div className='story__content__first__end'>
                     <img
-                      src={`${process.env.REACT_APP_FE_CDN}love-story-2.png`}
+                      src={`${process.env.REACT_APP_FE_CDN}images/love-story-2.png`}
                       alt=''
                     />
                     <div className='d-flex justify-content-end'>
@@ -550,7 +556,7 @@ export default function InvitationPage() {
               {MobileContext.mobile ? (
                 <Fade direction='left'>
                   <img
-                    src={`${process.env.REACT_APP_FE_CDN}mobile-love-story-2.png`}
+                    src={`${process.env.REACT_APP_FE_CDN}images/mobile-love-story-2.png`}
                     alt=''
                   />
                 </Fade>
@@ -559,7 +565,7 @@ export default function InvitationPage() {
               {!MobileContext.mobile ? (
                 <Fade direction='right'>
                   <img
-                    src={`${process.env.REACT_APP_FE_CDN}mobile-love-story.jpeg`}
+                    src={`${process.env.REACT_APP_FE_CDN}images/mobile-love-story.jpeg`}
                     alt=''
                   />
                 </Fade>
@@ -586,11 +592,11 @@ export default function InvitationPage() {
         {!MobileContext.mobile ? (
           <div className='flower__date d-flex justify-content-between'>
             <img
-              src={`${process.env.REACT_APP_FE_CDN}flower-date-left.png`}
+              src={`${process.env.REACT_APP_FE_CDN}images/flower-date-left.png`}
               alt=''
             />
             <img
-              src={`${process.env.REACT_APP_FE_CDN}flower-date-right.png`}
+              src={`${process.env.REACT_APP_FE_CDN}images/flower-date-right.png`}
               alt=''
             />
           </div>
@@ -598,13 +604,13 @@ export default function InvitationPage() {
           <>
             <div className='flower-mobile__date__right d-flex justify-content-end'>
               <img
-                src={`${process.env.REACT_APP_FE_CDN}mobile-date-right.png`}
+                src={`${process.env.REACT_APP_FE_CDN}images/mobile-date-right.png`}
                 alt=''
               />
             </div>
             <div className='flower-mobile__date__left d-flex justify-content-start'>
               <img
-                src={`${process.env.REACT_APP_FE_CDN}mobile-date-left.png`}
+                src={`${process.env.REACT_APP_FE_CDN}images/mobile-date-left.png`}
                 alt=''
               />
             </div>
@@ -683,7 +689,7 @@ export default function InvitationPage() {
               {' '}
               <img
                 className='background-img'
-                src={`${process.env.REACT_APP_FE_CDN}countdown.png`}
+                src={`${process.env.REACT_APP_FE_CDN}images/countdown.png`}
                 alt=''
               />
               <div className='countdown__container__counter'>
@@ -733,7 +739,7 @@ export default function InvitationPage() {
         {!MobileContext.mobile ? (
           <div className='flower__map__left'>
             <img
-              src={`${process.env.REACT_APP_FE_CDN}flower-map-left.png`}
+              src={`${process.env.REACT_APP_FE_CDN}images/flower-map-left.png`}
               alt=''
             />
           </div>
@@ -780,7 +786,7 @@ export default function InvitationPage() {
                 }`}
               >
                 <img
-                  src={`${process.env.REACT_APP_FE_CDN}flower-map.png`}
+                  src={`${process.env.REACT_APP_FE_CDN}images/flower-map.png`}
                   alt=''
                 />
               </div>
@@ -795,7 +801,7 @@ export default function InvitationPage() {
         {MobileContext.mobile ? (
           <div className='flower-mobile__rsvp d-flex justify-content-start'>
             <img
-              src={`${process.env.REACT_APP_FE_CDN}mobile-rsvp-left.png`}
+              src={`${process.env.REACT_APP_FE_CDN}images/mobile-rsvp-left.png`}
               alt=''
             />
           </div>
@@ -895,7 +901,7 @@ export default function InvitationPage() {
               <div className='health-protocol__content__img row row-cols-3'>
                 <div className='health-protocol__content__item col-4'>
                   <img
-                    src={`${process.env.REACT_APP_FE_CDN}LOGO2.png`}
+                    src={`${process.env.REACT_APP_FE_CDN}images/LOGO2.png`}
                     alt=''
                   />
                   <Paragraph
@@ -905,7 +911,7 @@ export default function InvitationPage() {
                 </div>{' '}
                 <div className='health-protocol__content__item col-4'>
                   <img
-                    src={`${process.env.REACT_APP_FE_CDN}LOGO3.png`}
+                    src={`${process.env.REACT_APP_FE_CDN}images/LOGO3.png`}
                     alt=''
                   />
                   <Paragraph
@@ -915,7 +921,7 @@ export default function InvitationPage() {
                 </div>{' '}
                 <div className='health-protocol__content__item col-4'>
                   <img
-                    src={`${process.env.REACT_APP_FE_CDN}LOGO4.png`}
+                    src={`${process.env.REACT_APP_FE_CDN}images/LOGO4.png`}
                     alt=''
                   />
                   <Paragraph
@@ -991,7 +997,7 @@ export default function InvitationPage() {
                       <div className='col-3 d-flex align-items-center justify-content-end'>
                         <img
                           className='img-mandiri-logo'
-                          src={`${process.env.REACT_APP_FE_CDN}mandiri.png`}
+                          src={`${process.env.REACT_APP_FE_CDN}images/mandiri.png`}
                           alt=''
                         />
                       </div>
@@ -1015,7 +1021,7 @@ export default function InvitationPage() {
                             onClick={handleCopy}
                           >
                             <img
-                              src={`${process.env.REACT_APP_FE_CDN}copy.png`}
+                              src={`${process.env.REACT_APP_FE_CDN}images/copy.png`}
                               alt=''
                             />
                           </span>
@@ -1032,7 +1038,7 @@ export default function InvitationPage() {
                       <div className='col-3 d-flex align-items-center justify-content-end'>
                         <img
                           className='img-bni-logo'
-                          src={`${process.env.REACT_APP_FE_CDN}bni.png`}
+                          src={`${process.env.REACT_APP_FE_CDN}images/bni.png`}
                           alt=''
                         />
                       </div>
@@ -1051,7 +1057,7 @@ export default function InvitationPage() {
                             className='copy-icon'
                           >
                             <img
-                              src={`${process.env.REACT_APP_FE_CDN}copy.png`}
+                              src={`${process.env.REACT_APP_FE_CDN}images/copy.png`}
                               alt=''
                             />
                           </span>
@@ -1075,7 +1081,7 @@ export default function InvitationPage() {
                         <div className='d-flex align-items-center justify-content-center '>
                           <img
                             className='img-car-logo'
-                            src={`${process.env.REACT_APP_FE_CDN}car.png`}
+                            src={`${process.env.REACT_APP_FE_CDN}images/car.png`}
                             alt=''
                           />
                         </div>
@@ -1118,22 +1124,22 @@ export default function InvitationPage() {
         {!MobileContext.mobile ? (
           <div className='flower__message d-flex justify-content-between'>
             <img
-              src={`${process.env.REACT_APP_FE_CDN}flower-message-left.png`}
+              src={`${process.env.REACT_APP_FE_CDN}images/flower-message-left.png`}
               alt=''
             />
             <img
-              src={`${process.env.REACT_APP_FE_CDN}flower-message-right.png`}
+              src={`${process.env.REACT_APP_FE_CDN}images/flower-message-right.png`}
               alt=''
             />
           </div>
         ) : (
           <div className='flower-mobile__message d-flex justify-content-between'>
             <img
-              src={`${process.env.REACT_APP_FE_CDN}mobile-story-left.png`}
+              src={`${process.env.REACT_APP_FE_CDN}images/mobile-story-left.png`}
               alt=''
             />
             <img
-              src={`${process.env.REACT_APP_FE_CDN}mobile-story-right.png`}
+              src={`${process.env.REACT_APP_FE_CDN}images/mobile-story-right.png`}
               alt=''
             />
           </div>
@@ -1258,7 +1264,7 @@ export default function InvitationPage() {
           </div>
           <img
             className='surah__container__background'
-            src={`${process.env.REACT_APP_FE_CDN}surah-background.png`}
+            src={`${process.env.REACT_APP_FE_CDN}images/surah-background.png`}
             alt=''
           />
         </div>
@@ -1280,11 +1286,11 @@ export default function InvitationPage() {
         </div>
         <div className='flower__footer d-flex justify-content-between'>
           <img
-            src={`${process.env.REACT_APP_FE_CDN}flower-bottom-left.png`}
+            src={`${process.env.REACT_APP_FE_CDN}images/flower-bottom-left.png`}
             alt=''
           />
           <img
-            src={`${process.env.REACT_APP_FE_CDN}flower-bottom-right.png`}
+            src={`${process.env.REACT_APP_FE_CDN}images/flower-bottom-right.png`}
             alt=''
           />
         </div>
