@@ -1282,7 +1282,13 @@ export default function InvitationPage() {
           >
             @Ridaffa
           </span>
-          <span>KimalLogo</span>
+          <span>
+            <img
+              height={25}
+              src={`${process.env.REACT_APP_FE_CDN}images/logo-kimal.png`}
+              alt=''
+            />
+          </span>
         </div>
         <div className='flower__footer d-flex justify-content-between'>
           <img
