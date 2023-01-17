@@ -41,15 +41,15 @@ export default function LandingBody(props: { name: string; title: string }) {
       <Fade>
         <div className='landing-greet'>
           <SubHeadingText
-            fontSize={MobileContext.mobile ? '1.5rem' : '1.563vw'}
+            fontSize={MobileContext.mobile ? '0.95rem' : '1.563vw'}
             text={LangContext.lang.landing.yth}
           ></SubHeadingText>
           <SubHeadingText
-            fontSize={MobileContext.mobile ? '2.5rem' : '2.604vw'}
+            fontSize={MobileContext.mobile ? '1.5rem' : '2.604vw'}
             text={props.name}
           ></SubHeadingText>
           <SubHeadingText
-            fontSize={MobileContext.mobile ? '1.5rem' : '1.563vw'}
+            fontSize={MobileContext.mobile ? '0.95rem' : '1.563vw'}
             text={props.title}
           ></SubHeadingText>
         </div>

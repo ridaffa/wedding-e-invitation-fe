@@ -190,6 +190,11 @@ export default function InvitationPage() {
       case 'bni-copy':
         navigator.clipboard.writeText('1430292508');
         break;
+      case 'address-copy':
+        navigator.clipboard.writeText(
+          'Jl. Setia Budi III No.10, RW.3, Kuningan, Setia Budi, Kecamatan Setiabudi, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12910'
+        );
+        break;
       default:
         break;
     }
@@ -402,7 +407,7 @@ export default function InvitationPage() {
               </div>
               <div className='col-5'>
                 <HeadingText fontSize='3.125rem' text='Faishal Arif' />
-                <div className='w-50'>
+                <div className='w-75'>
                   <SubHeadingText
                     fontSize='1.563vw'
                     text={LangContent.innerContent.manDesc}
@@ -1104,12 +1109,33 @@ export default function InvitationPage() {
                         </div>
                         <div className='text-start'>
                           <div className='note'>
+                            <div className='d-flex justify-content-start'>
+                              <Span
+                                fontSize={` ${
+                                  MobileContext.mobile ? '0.75rem' : '1.563vw'
+                                }`}
+                                underline={true}
+                                text={`Avalon Residence`}
+                              ></Span>
+                              <span
+                                id='address-copy'
+                                className='copy-icon'
+                                onClick={handleCopy}
+                              >
+                                <img
+                                  src={`${process.env.REACT_APP_FE_CDN}images/copy.png`}
+                                  alt=''
+                                />
+                              </span>
+                            </div>
+
                             <Paragraph
                               fontSize={` ${
                                 MobileContext.mobile ? '0.75rem' : '1.563vw'
                               }`}
-                              text={`Avalon Residence, Jl. Setia Budi III No.10, RW.3, Kuningan, Setia Budi, Kecamatan Setiabudi, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12910\n\n`}
+                              text={`Jl. Setia Budi III No.10, RW.3, Kuningan, Setia Budi, Kecamatan Setiabudi, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12910\n\n`}
                             ></Paragraph>
+
                             <Paragraph
                               fontWeight={700}
                               fontSize={` ${
@@ -1343,7 +1369,7 @@ export default function InvitationPage() {
         id='footer'
         className={`footer ${MobileContext.mobile && 'mobile'}`}
       >
-        <div className='d-flex justify-content-center mb-5'>
+        <div className='d-flex justify-content-center mb-3'>
           <span>Background Music : Maliq & D'essentials - Menari (2011)</span>
         </div>
         <div className='footer__content d-flex justify-content-center'>
