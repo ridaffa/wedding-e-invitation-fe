@@ -12,7 +12,7 @@ export default function LandingSection(props: { children: React.ReactNode }) {
             ? `${process.env.REACT_APP_FE_CDN}images/foto/cover-mobile.png`
             : `${process.env.REACT_APP_FE_CDN}images/foto/cover.jpg`
         }`}
-        alt='Uti dan Faisal'
+        alt='Uti dan Faishal'
       />
       {props.children}
     </div>

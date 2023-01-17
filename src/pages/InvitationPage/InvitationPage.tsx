@@ -277,7 +277,7 @@ export default function InvitationPage() {
               <HeadingText
                 fontWeight={700}
                 fontSize={MobileContext.mobile ? '1.25rem' : '7.5rem'}
-                text={'FAISAL'}
+                text={'FAISHAL'}
               ></HeadingText>
             </Fade>
             <div className={`${MobileContext.mobile ? 'mt-2' : 'mt-6'}`}>
