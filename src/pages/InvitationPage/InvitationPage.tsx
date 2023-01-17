@@ -477,23 +477,23 @@ export default function InvitationPage() {
           <div
             className={`story__content ${MobileContext.mobile ? 'mobile' : ''}`}
           >
+            {!MobileContext.mobile ? null : (
+              <div className='flower-mobile__story__second'>
+                <img
+                  src={`${process.env.REACT_APP_FE_CDN}images/mobile-story-left.png`}
+                  alt=''
+                />
+                <img
+                  src={`${process.env.REACT_APP_FE_CDN}images/mobile-story-right.png`}
+                  alt=''
+                />
+              </div>
+            )}
             <div
               className={`story__content__first ${
                 MobileContext.mobile ? 'mobile' : ''
               }`}
             >
-              {!MobileContext.mobile ? null : (
-                <div className='flower-mobile__story__second'>
-                  <img
-                    src={`${process.env.REACT_APP_FE_CDN}images/mobile-story-left.png`}
-                    alt=''
-                  />
-                  <img
-                    src={`${process.env.REACT_APP_FE_CDN}images/mobile-story-right.png`}
-                    alt=''
-                  />
-                </div>
-              )}
               <Fade direction='left'>
                 <Paragraph
                   fontSize={MobileContext.mobile ? '0.75rem' : '1.563vw'}
