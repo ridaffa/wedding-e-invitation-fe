@@ -5,7 +5,7 @@
   flex-direction: row;
   margin-right: 2rem;
   margin-top: 1rem;
-  z-index: 5;
+  z-index: 10;
   place-items: center;
 }
 
