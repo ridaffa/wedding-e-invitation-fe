@@ -1359,25 +1359,34 @@ export default function InvitationPage() {
         id='footer'
         className={`footer ${MobileContext.mobile && 'mobile'}`}
       >
-        <div className='d-flex justify-content-center mb-3'>
+        <div className='d-flex justify-content-center mb-3 w-50'>
           <span>Background Music : Maliq & D'essentials - Menari (2011)</span>
         </div>
-        <div className='footer__content d-flex justify-content-center'>
+        <div
+          className={`footer__content d-flex justify-content-center ${
+            MobileContext.mobile ? 'flex-column align-items-center' : 'flex-row'
+          }`}
+        >
           <span>Powered By</span>
-          <span
-            onClick={() => {
-              window.location.href = 'https://linkedin.com/in/ridaffa';
-            }}
+          <div
+            className='d-flex justify-content-between'
+            style={{ gap: '1rem' }}
           >
-            @Ridaffa
-          </span>
-          <span>
-            <img
-              height={25}
-              src={`${process.env.REACT_APP_FE_CDN}images/logo-kimal.png`}
-              alt=''
-            />
-          </span>
+            <span
+              onClick={() => {
+                window.location.href = 'https://linkedin.com/in/ridaffa';
+              }}
+            >
+              @Ridaffa
+            </span>
+            <span>
+              <img
+                height={25}
+                src={`${process.env.REACT_APP_FE_CDN}images/logo-kimal.png`}
+                alt=''
+              />
+            </span>
+          </div>
         </div>
         <div className='flower__footer d-flex justify-content-between'>
           <img
