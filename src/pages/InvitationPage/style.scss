@@ -872,22 +872,6 @@
   }
 }
 
-.flower__map {
-  position: absolute;
-  bottom: -40%;
-  right: -30%;
-  img {
-    max-width: 50vh;
-  }
-  &.mobile {
-    bottom: -15%;
-    right: -75px;
-    img {
-      max-width: 25vh;
-    }
-  }
-}
-
 .flower__map__left {
   width: 100%;
   position: absolute;
@@ -932,16 +916,6 @@
   }
   .flower__map__left {
     top: 50%;
-  }
-}
-@media only screen and (max-width: 1000px) {
-  .flower__map {
-    bottom: -40%;
-    right: -30%;
-    top: 35%;
-    img {
-      max-width: 25vh;
-    }
   }
 }
 

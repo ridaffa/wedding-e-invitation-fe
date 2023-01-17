@@ -777,16 +777,6 @@ export default function InvitationPage() {
                 id='gmap_canvas'
                 src='https://maps.google.com/maps?q=Wisma%20Bungsuna%20Dewi&t=&z=13&ie=UTF8&iwloc=&output=embed'
               ></iframe>
-              <div
-                className={`flower__map ${
-                  MobileContext.mobile ? 'mobile' : ''
-                }`}
-              >
-                <img
-                  src={`${process.env.REACT_APP_FE_CDN}images/flower-map.png`}
-                  alt=''
-                />
-              </div>
             </div>
             {MobileContext.mobile ? (
               <button onClick={openLocation}>{LangContent.map.button}</button>
