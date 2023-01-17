@@ -17,6 +17,8 @@ import Span from '../../components/Span';
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
+import 'react-h5-audio-player/lib/styles.css';
+
 import { IGuest, IRsvp } from '../../interfaces/GuestInterface';
 import { IMessage, IMessageRequest } from '../../interfaces/MessageInterface';
 import {
@@ -213,6 +215,7 @@ export default function InvitationPage() {
     }, 1000);
     return () => clearInterval(interval);
   }, []);
+
   return (
     <InvitationSection>
       <LangMusic>
@@ -258,7 +261,7 @@ export default function InvitationPage() {
             </Fade>
             <Fade>
               <HeadingText
-                fontSize={MobileContext.mobile ? '1.25rem' : '7.5rem'}
+                fontSize={MobileContext.mobile ? '1.25rem' : '6.25vw'}
                 fontWeight={700}
                 text={'UTI'}
               ></HeadingText>
@@ -266,7 +269,7 @@ export default function InvitationPage() {
             <Fade>
               {' '}
               <HeadingText
-                fontSize={MobileContext.mobile ? '1.25rem' : '5rem'}
+                fontSize={MobileContext.mobile ? '1.25rem' : '4.167vw'}
                 fontWeight={700}
                 text={'&'}
               ></HeadingText>
@@ -276,7 +279,7 @@ export default function InvitationPage() {
               {' '}
               <HeadingText
                 fontWeight={700}
-                fontSize={MobileContext.mobile ? '1.25rem' : '7.5rem'}
+                fontSize={MobileContext.mobile ? '1.25rem' : '6.25vw'}
                 text={'FAISHAL'}
               ></HeadingText>
             </Fade>
@@ -319,7 +322,7 @@ export default function InvitationPage() {
             alt=''
           />
         </div>
-        <Fade direction='left'>
+        <Fade key={LangContent.innerContent.title}>
           <div className='container content-first'>
             <div className={`content ${MobileContext.mobile ? 'mobile' : ''}`}>
               <p>Assalamu ‘alaikum wr. wb.</p>
@@ -409,17 +412,6 @@ export default function InvitationPage() {
             </div>
           </div>
         ) : null}
-
-        <Fade direction='down'>
-          <div className='container content-second'>
-            {' '}
-            <div
-              className={`content ${MobileContext.mobile ? 'mobile' : 'mt-5'} `}
-            >
-              <p>{LangContent.innerContent.footerBody}</p>
-            </div>
-          </div>
-        </Fade>
       </section>
       <section className={`separator ${MobileContext.mobile ? 'mobile' : ''}`}>
         {!MobileContext.mobile ? (
@@ -565,7 +557,7 @@ export default function InvitationPage() {
               {!MobileContext.mobile ? (
                 <Fade direction='right'>
                   <img
-                    src={`${process.env.REACT_APP_FE_CDN}images/mobile-love-story.jpeg`}
+                    src={`${process.env.REACT_APP_FE_CDN}images/love-story-1.jpeg`}
                     alt=''
                   />
                 </Fade>
@@ -843,6 +835,7 @@ export default function InvitationPage() {
                     placeholder={LangContent.rsvp.inputName}
                     value={guest.fullname}
                     readOnly
+                    className='form-control'
                     disabled
                     required
                   />
@@ -851,6 +844,7 @@ export default function InvitationPage() {
                   <input
                     type='address'
                     id='address'
+                    className='form-control'
                     placeholder={LangContent.rsvp.inputAddress}
                     onChange={handleInputRsvpAddress}
                     defaultValue={guest.address}
@@ -861,6 +855,7 @@ export default function InvitationPage() {
                   <select
                     name='presence'
                     id='presence'
+                    className='form-control'
                     onChange={handleInputRsvp}
                     required
                   >
@@ -1013,18 +1008,26 @@ export default function InvitationPage() {
                             fontSize={` ${
                               MobileContext.mobile ? '0.75rem' : '1.563vw'
                             }`}
-                            text={`${LangContent.weddingGift.pAccNumber} : 1230007875349`}
+                            text={`${LangContent.weddingGift.pAccNumber}`}
                           />
-                          <span
-                            id='mandiri-copy'
-                            className='copy-icon'
-                            onClick={handleCopy}
-                          >
-                            <img
-                              src={`${process.env.REACT_APP_FE_CDN}images/copy.png`}
-                              alt=''
+                          <div className='d-flex flex-row justify-content-start'>
+                            <Span
+                              fontSize={` ${
+                                MobileContext.mobile ? '0.75rem' : '1.563vw'
+                              }`}
+                              text={`1230007875349`}
                             />
-                          </span>
+                            <span
+                              id='mandiri-copy'
+                              className='copy-icon'
+                              onClick={handleCopy}
+                            >
+                              <img
+                                src={`${process.env.REACT_APP_FE_CDN}images/copy.png`}
+                                alt=''
+                              />
+                            </span>
+                          </div>
                           <Paragraph
                             fontSize={` ${
                               MobileContext.mobile ? '0.75rem' : '1.563vw'
@@ -1054,18 +1057,27 @@ export default function InvitationPage() {
                             fontSize={` ${
                               MobileContext.mobile ? '0.75rem' : '1.563vw'
                             }`}
-                            text={`${LangContent.weddingGift.pAccNumber} : 1430292508`}
+                            text={`${LangContent.weddingGift.pAccNumber}`}
                           ></Span>
-                          <span
-                            onClick={handleCopy}
-                            id='bni-copy'
-                            className='copy-icon'
-                          >
-                            <img
-                              src={`${process.env.REACT_APP_FE_CDN}images/copy.png`}
-                              alt=''
-                            />
-                          </span>
+                          <div className='d-flex flex-row justify-content-start'>
+                            <Span
+                              fontSize={` ${
+                                MobileContext.mobile ? '0.75rem' : '1.563vw'
+                              }`}
+                              text={`1430292508`}
+                            ></Span>
+                            <span
+                              onClick={handleCopy}
+                              id='bni-copy'
+                              className='copy-icon'
+                            >
+                              <img
+                                src={`${process.env.REACT_APP_FE_CDN}images/copy.png`}
+                                alt=''
+                              />
+                            </span>
+                          </div>
+
                           <Paragraph
                             fontSize={` ${
                               MobileContext.mobile ? '0.75rem' : '1.563vw'
@@ -1096,7 +1108,7 @@ export default function InvitationPage() {
                               fontSize={` ${
                                 MobileContext.mobile ? '0.75rem' : '1.563vw'
                               }`}
-                              text='Avalon Residence, Jl. Setia Budi III No.10, RW.3, Kuningan, Setia Budi, Kecamatan Setiabudi, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12910'
+                              text={`Avalon Residence, Jl. Setia Budi III No.10, RW.3, Kuningan, Setia Budi, Kecamatan Setiabudi, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12910\n\n`}
                             ></Paragraph>
                             <Paragraph
                               fontWeight={700}
@@ -1250,6 +1262,59 @@ export default function InvitationPage() {
               ) : null}
             </div>
           </div>
+          <Fade>
+            <div className='message__footer d-flex justify-content-center text-center flex-column'>
+              <Paragraph
+                fontSize={MobileContext.mobile ? '0.875rem' : '2.083vw'}
+                text={LangContent.message.footerBody}
+              />
+              <Paragraph
+                fontSize={MobileContext.mobile ? '0.875rem' : '2.083vw'}
+                text={`Wassalamu ‘alaikum wr. wb.`}
+              />
+              <div className='d-flex flex-column'>
+                <Paragraph
+                  fontSize={MobileContext.mobile ? '0.875rem' : '2.083vw'}
+                  text={LangContent.message.footerRegards}
+                />
+                <Paragraph
+                  fontWeight={700}
+                  fontSize={` ${MobileContext.mobile ? '2rem' : `5.208vw`}`}
+                  text={`UTI & FAISHAL`}
+                />
+                <Paragraph
+                  fontSize={` ${MobileContext.mobile ? '0.75rem' : '1.563vw'}`}
+                  text={LangContent.message.footerFamily}
+                />
+                <div className='row'>
+                  <div className='col-5 text-end'>
+                    <Paragraph
+                      fontSize={` ${
+                        MobileContext.mobile ? '0.75rem' : '1.563vw'
+                      }`}
+                      text={LangContent.message.footerWoman}
+                    />
+                  </div>
+                  <div className='col-2'>
+                    <Paragraph
+                      fontSize={` ${
+                        MobileContext.mobile ? '0.75rem' : '1.563vw'
+                      }`}
+                      text={`&`}
+                    />
+                  </div>
+                  <div className='col-5 text-start'>
+                    <Paragraph
+                      fontSize={` ${
+                        MobileContext.mobile ? '0.75rem' : '1.563vw'
+                      }`}
+                      text={LangContent.message.footerMan}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Fade>
         </div>
       </section>
       <section
@@ -1278,6 +1343,9 @@ export default function InvitationPage() {
         id='footer'
         className={`footer ${MobileContext.mobile && 'mobile'}`}
       >
+        <div className='d-flex justify-content-center mb-5'>
+          <span>Background Music : Maliq & D'essentials - Menari (2011)</span>
+        </div>
         <div className='footer__content d-flex justify-content-center'>
           <span>Powered By</span>
           <span

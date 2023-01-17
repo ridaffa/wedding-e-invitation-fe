@@ -7,6 +7,7 @@ import LoginPage from './pages/LoginPage/LoginPage';
 import LandingPage from './pages/LandingPage/LandingPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import AdminDashboard from './pages/AdminDashboard/AdminDashboard';
+import Music from './components/Music/Music';
 
 function App() {
   const MobileContext = MobileConsumer();
@@ -23,12 +24,19 @@ function App() {
   });
   return (
     <Routes>
-      <Route>
+      <Route
+        element={
+          <Music src={`${process.env.REACT_APP_FE_CDN}music/music.mp3`} />
+        }
+      >
         <Route path='/landing-page/:uuid' element={<LandingPage />} />
         <Route path='/invitation' element={<InvitationPage />} />{' '}
+      </Route>
+      <Route>
         <Route path='/admin' element={<LoginPage />} />
         <Route path='/admin/dashboard' element={<AdminDashboard />} />
       </Route>
+
       <Route path='*' element={<NotFoundPage />}></Route>
     </Routes>
   );

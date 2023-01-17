@@ -11,11 +11,10 @@ export const LangId: ILang = {
     date: "28 Januari 2023",
   },
   innerContent: {
-    title: "Yang terhormat rekan-rekan dan keluarga,",
+    title: "Yang terhormat Bapak/Ibu/Saudara/i,",
     body: "Dengan nama Allah SWT Yang Maha Pengasih dan Maha Penyayang, dengan memohon rahmat dan ridha Allah SWT, dengan hormat kami mengharapkan kehadiran Anda pada acara pernikahan kami,",
-    womanDesc: "Putri dari Bapak Yayat Ruhiat dan Ibu Rina Marlina",
-    manDesc: "Putra dari Bapak Mokhamad Heriyanto (Alm) dan Ibu Ratnawati Djajanegara",
-    footerBody: "Merupakan suatu kebahagiaan bagi kami jika Bapak/Ibu/Saudara/i berkenan menghadiri undangan kami.",
+    womanDesc: "Putri dari \nBapak Yayat Ruhiat dan \nIbu Rina Marlina",
+    manDesc: `Putra dari \nBapak Mokhamad Heriyanto (Alm) dan \nIbu Ratnawati Djajanegara`,
   },
   story: {
     title: "Our Love Story",
@@ -78,7 +77,12 @@ export const LangId: ILang = {
     subtitle: "Tulis pesan dan harapan terbaik Anda untuk kami pada kolom di bawah ini.",
     inputName: "Nama Pengirim",
     inputMessage: "Tulis Pesan...",
-    button: "Kirim"
+    button: "Kirim",
+    footerBody: "Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/I berkenan hadir untuk memberikan doa restu kepada kedua mempelai. Atas kehadiran serta doa restu, kami ucapkan terima kasih.",
+    footerRegards: "Hormat kami,",
+    footerFamily: "serta keluarga besar dari,",
+    footerWoman: `Bapak Yayat Ruhiat \ndan Ibu Rina Marlina`,
+    footerMan: `Bapak Mokhamad Heriyanto (Alm) \ndan Ibu Ratnawati Djajanegara`,
   },
   surah: {
     title: "“Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.”",

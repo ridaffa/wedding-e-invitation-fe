@@ -13,9 +13,8 @@ export const LangEn: ILang = {
   innerContent: {
     title: "Dear family and colleagues,",
     body: "In the name of Allah SWT, the Most Beneficent and the Most Merciful, by asking for the mercy and pleasure of Allah SWT, we would like to request your honor for your presence in our wedding,",
-    womanDesc: "Daughter of Mr. Yayat Ruhiat and Mrs. Rina Marlina",
-    manDesc: "Son of Mr. Mokhamad Heriyanto (Alm) and Mrs. Ratnawati Djajanegara",
-    footerBody: "and happily wish us our hearts unity and lives through marriage. It is an honor and great happiness for us if family and relatives are willing to attend to give blessings for us.",
+    womanDesc: "Daughter of \nMr. Yayat Ruhiat and \nMrs. Rina Marlina",
+    manDesc: "Son of \nMr. Mokhamad Heriyanto (Alm) and \nMrs. Ratnawati Djajanegara",
   },
   story: {
     title: "Our Love Story",
@@ -78,7 +77,12 @@ export const LangEn: ILang = {
     subtitle: "Write your message and best wishes for us in the column below.",
     inputName: "Sender Name",
     inputMessage: "Write your message...",
-    button: "Send"
+    button: "Send",
+    footerBody: "Thank you for happily wish us our hearts unity and lives through marriage. It is an honor and great happiness for us if family and relatives are willing to attend to give blessings for us.",
+    footerRegards: "Best regards,",
+    footerFamily: "with their families,",
+    footerWoman: `Mr. Yayat Ruhiat \nand Mrs. Rina Marlina`,
+    footerMan: `Mr. Mokhamad Heriyanto (Alm) \nand Mrs. Ratnawati Djajanegara`,
   },
   surah: {
     title: "“And one of His signs is that He created for you spouses from among yourselves so that you may find comfort in them. And He has placed between you compassion and mercy. Surely in this are signs for people who reflect.”",

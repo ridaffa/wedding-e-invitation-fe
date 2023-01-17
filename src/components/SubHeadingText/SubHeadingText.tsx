@@ -1,3 +1,5 @@
+import { Fade } from 'react-awesome-reveal';
+
 export default function SubHeadingText(props: {
   text: string;
   fontWeight?: number;
@@ -5,9 +7,11 @@ export default function SubHeadingText(props: {
 }) {
   return (
     <div>
-      <p style={{ fontWeight: props.fontWeight, fontSize: props.fontSize }}>
-        {props.text}
-      </p>
+      <Fade key={props.text}>
+        <p style={{ fontWeight: props.fontWeight, fontSize: props.fontSize }}>
+          {props.text}
+        </p>
+      </Fade>
     </div>
   );
 }

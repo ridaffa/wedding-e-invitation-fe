@@ -125,9 +125,7 @@
       gap: 0;
     }
     img {
-      max-width: 100%;
-      height: auto;
-      width: auto;
+      width: 100%;
       margin-bottom: 5rem;
     }
     &__first,
@@ -331,6 +329,7 @@
       select {
         width: 100%;
         padding: 0.5rem;
+        font-size: 0.9vw;
       }
       .btn-submit {
         align-items: center;
@@ -396,6 +395,8 @@
     .wedding-gift__content {
       padding-left: 0.5rem;
       &__body {
+        z-index: 6;
+        position: relative;
         &__account {
           &__bank {
             div {
@@ -424,6 +425,8 @@
   &__content {
     &__body {
       &__account {
+        z-index: 6;
+        position: relative;
         &__container {
           gap: 2rem;
         }
@@ -602,6 +605,10 @@
       z-index: 5;
     }
   }
+  &__footer {
+    margin-top: 5rem;
+    gap: 4.563vw;
+  }
 }
 
 .surah {
@@ -641,6 +648,7 @@
 }
 
 .footer {
+  color: #eeeeee;
   &.mobile {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
@@ -655,7 +663,12 @@
   padding-bottom: 5rem;
   color: white;
   &__content {
+    position: relative;
+    z-index: 6;
     gap: 2rem;
+    span {
+      cursor: pointer;
+    }
   }
 }
 
@@ -663,6 +676,7 @@
   margin-left: 0.5rem;
   width: auto;
   cursor: pointer;
+  z-index: 6;
   img {
     width: 100%;
     max-width: 1.5rem;
@@ -714,7 +728,7 @@
   z-index: 3;
   top: -150%;
   img {
-    max-height: 115vw;
+    max-height: 90vw;
   }
 }
 

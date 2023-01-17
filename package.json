@@ -17,6 +17,7 @@
     "react-awesome-reveal": "^4.1.0",
     "react-cookie": "^4.1.1",
     "react-dom": "^18.2.0",
+    "react-h5-audio-player": "^3.8.6",
     "react-router-dom": "^6.6.1",
     "react-router-hash-link": "^2.4.3",
     "react-scripts": "5.0.1",

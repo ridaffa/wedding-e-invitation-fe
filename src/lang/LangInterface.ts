@@ -13,7 +13,6 @@ export interface ILang {
     body: string;
     womanDesc: string;
     manDesc: string;
-    footerBody: string;
   },
   story: {
     title: string;
@@ -77,6 +76,11 @@ export interface ILang {
     inputName: string;
     inputMessage: string;
     button: string;
+    footerBody: string;
+    footerRegards: string;
+    footerFamily: string;
+    footerWoman: string;
+    footerMan: string;
   }
   surah: {
     title: string;

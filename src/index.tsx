@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { LangProvider } from './contexts/LangContexts';
 import { MobileProvider } from './contexts/MobileContext';
+import { MusicProvider } from './contexts/MusicContexts';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
@@ -13,9 +14,11 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <MobileProvider>
-        <LangProvider>
-          <App />
-        </LangProvider>
+        <MusicProvider>
+          <LangProvider>
+            <App />
+          </LangProvider>
+        </MusicProvider>
       </MobileProvider>
     </BrowserRouter>
   </React.StrictMode>

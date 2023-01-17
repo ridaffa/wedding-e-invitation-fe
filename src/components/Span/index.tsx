@@ -1,3 +1,5 @@
+import { Fade } from 'react-awesome-reveal';
+
 export default function Span(props: {
   text: string;
   fontWeight?: number;
@@ -5,11 +7,13 @@ export default function Span(props: {
   id?: string;
 }) {
   return (
-    <span
-      id={props.id}
-      style={{ fontWeight: props.fontWeight, fontSize: props.fontSize }}
-    >
-      {props.text}
-    </span>
+    <Fade key={props.text}>
+      <span
+        id={props.id}
+        style={{ fontWeight: props.fontWeight, fontSize: props.fontSize }}
+      >
+        {props.text}
+      </span>
+    </Fade>
   );
 }

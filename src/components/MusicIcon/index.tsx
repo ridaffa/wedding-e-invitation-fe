@@ -1,27 +1,23 @@
 import './style.css';
 import musicOn from '../../assets/music-on.png';
 import musicOff from '../../assets/music-off.png';
-import { useEffect, useState } from 'react';
 import MobileConsumer from '../../contexts/MobileContext';
+import MusicConsumer from '../../contexts/MusicContexts';
 
 export default function MusicIcon() {
   const MobileContext = MobileConsumer();
-  const [music, setMusic] = useState<string>(musicOff);
-  useEffect(() => {
-    setMusic(musicOn);
-  }, []);
-
+  const MusicContext = MusicConsumer();
   const handleMusic = () => {
-    if (music === musicOn) {
-      setMusic(musicOff);
-    } else {
-      setMusic(musicOn);
-    }
+    MusicContext.setMusic?.(!MusicContext.music);
   };
 
   return (
     <div className={`music-icon ${MobileContext.mobile ? 'mobile' : ''}`}>
-      <img src={music} alt='' onClick={handleMusic} />
+      <img
+        src={MusicContext?.music ? musicOn : musicOff}
+        alt=''
+        onClick={handleMusic}
+      />
     </div>
   );
 }
