@@ -25,8 +25,10 @@ import {
   IPagination,
   IPaginationRes,
 } from '../../interfaces/PaginationInterface';
+import Loading from '../../components/Loading/Loading';
 
 export default function InvitationPage() {
+  const [loading, setLoading] = useState(false);
   const [guest, setGuest] = useState<IGuest>({
     id: 0,
     uuid: '',
@@ -53,6 +55,7 @@ export default function InvitationPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    setLoading(true);
     const guest = localStorage?.getItem('guest');
     if (guest) {
       fetch(`${process.env.REACT_APP_BE_URL}guests/${JSON.parse(guest)?.uuid}`)
@@ -73,7 +76,8 @@ export default function InvitationPage() {
           toast.error('error');
           localStorage.removeItem('guest');
           navigate('/');
-        });
+        })
+        .finally(() => setLoading(false));
     } else {
       navigate('/');
     }
@@ -94,6 +98,7 @@ export default function InvitationPage() {
     setMessage({ ...message, display_name: e.target.value });
   };
   const fetchMessages = () => {
+    setLoading(true);
     fetch(
       `${process.env.REACT_APP_BE_URL}messages/search?page=${reqPagination.page}&size=${reqPagination.size}`,
       {
@@ -115,7 +120,8 @@ export default function InvitationPage() {
       })
       .catch(() => {
         toast.error('error');
-      });
+      })
+      .finally(() => setLoading(false));
   };
   useEffect(() => {
     fetchMessages();
@@ -127,6 +133,7 @@ export default function InvitationPage() {
 
   const handleSubmitMessage = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
     fetch(`${process.env.REACT_APP_BE_URL}messages`, {
       method: 'POST',
       headers: {
@@ -146,10 +153,12 @@ export default function InvitationPage() {
       })
       .catch(() => {
         toast.error('error sending message');
-      });
+      })
+      .finally(() => setLoading(false));
   };
   const handleRsvp = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
     fetch(`${process.env.REACT_APP_BE_URL}guests/${guest.uuid}`, {
       method: 'PATCH',
       headers: {
@@ -167,7 +176,8 @@ export default function InvitationPage() {
       })
       .catch(() => {
         toast.error('RSVP Failed');
-      });
+      })
+      .finally(() => setLoading(false));
   };
   const handleInputRsvp = (e: React.ChangeEvent<HTMLSelectElement>) => {
     switch (e.currentTarget.value) {
@@ -223,6 +233,7 @@ export default function InvitationPage() {
 
   return (
     <InvitationSection>
+      {loading ? <Loading /> : null}
       <LangMusic>
         {MobileContext.mobile ? <MusicIcon></MusicIcon> : null}
         <LangIcon></LangIcon>
