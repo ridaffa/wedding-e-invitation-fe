@@ -1379,7 +1379,11 @@ export default function InvitationPage() {
             >
               @Ridaffa
             </span>
-            <span>
+            <span
+              onClick={() => {
+                window.location.href = 'https://www.instagram.com/studiokimal/';
+              }}
+            >
               <img
                 height={25}
                 src={`${process.env.REACT_APP_FE_CDN}images/logo-kimal.png`}
