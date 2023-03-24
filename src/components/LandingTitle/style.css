@@ -1,0 +1,13 @@
+.landing-title h2 {
+  font-family: 'Gowun Batang';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.563vw;
+  line-height: 2.6875rem;
+  text-align: center;
+  margin: 0;
+}
+
+.landing-title.mobile h2 {
+  font-size: 0.875rem;
+}

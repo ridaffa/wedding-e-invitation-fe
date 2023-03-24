@@ -1,0 +1,63 @@
+.lang-icon {
+  display: flex;
+  flex-direction: row;
+  color: white;
+  border: 2px solid #ababab;
+  outline: 2px solid #ababab;
+  outline-offset: 0.25rem;
+  border-radius: 1rem;
+  position: relative;
+  font-weight: 700;
+  font-size: 1.25rem;
+  height: 2.5rem;
+}
+
+.lang-icon div {
+  padding-top: 3px;
+  width: 4rem;
+  text-align: center;
+  cursor: pointer;
+  height: 100%;
+  overflow: hidden;
+}
+
+.lang-icon .lang-icon-left {
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  border-right: 1.5px solid #ababab;
+}
+
+.lang-icon .lang-icon-right {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  border-left: 1.5px solid #ababab;
+}
+
+.lang-icon .active {
+  background-color: #ababab;
+}
+
+.lang-icon.inactive-lang {
+  border: 1.5px solid #d3d2d7;
+  outline: 1.5px solid #d3d2d7;
+  font-size: 0.75rem;
+  height: 1.5rem;
+  color: black;
+  display: none;
+}
+
+.lang-icon.active-lang {
+  border: 1.5px solid #d3d2d7;
+  outline: 1.5px solid #d3d2d7;
+  font-size: 0.75rem;
+  height: 1.5rem;
+  color: black;
+}
+
+.lang-icon.active-lang > div {
+  width: 3rem;
+}
+
+.lang-icon.active-lang > .active {
+  background-color: #d3d2d7;
+}

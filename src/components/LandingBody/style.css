@@ -1,0 +1,31 @@
+.landing-body {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  color: white;
+  flex-direction: column;
+  vertical-align: middle;
+  gap: 0vw;
+}
+
+.landing-body h1 {
+  font-size: 1.875rem;
+}
+
+.landing-body.mobile {
+  gap: 0.5rem;
+}
+
+.landing-body.inactive-lang {
+  display: none;
+}
+
+.landing-body.active-lang {
+  display: block;
+}
+
+.landing-greet {
+  text-align: center;
+}

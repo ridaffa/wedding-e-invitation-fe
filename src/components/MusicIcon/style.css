@@ -1,0 +1,24 @@
+.music-icon {
+  position: relative;
+  border-radius: 50px;
+  margin-left: 3rem;
+  background-color: #d9d9d9;
+  text-align: center;
+  padding: 0.5vw 1vw;
+  cursor: pointer;
+}
+
+.music-icon img {
+  vertical-align: sub;
+}
+.music-icon.mobile {
+  bottom: 0.5rem;
+  width: 2.6rem;
+  height: 2.5rem;
+  margin-left: 1rem;
+  padding-top: 0.5rem;
+}
+
+.music-icon.mobile img {
+  max-width: 1.5rem;
+}

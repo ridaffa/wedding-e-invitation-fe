@@ -1,0 +1,12 @@
+.landing-date h3 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.563vw;
+  line-height: 2.6875rem;
+  text-align: center;
+  margin: 0;
+}
+
+.landing-date.inactive {
+  display: none;
+}

@@ -1,0 +1,14 @@
+.landing-logo-mobile {
+  display: none;
+}
+
+.landing-logo-mobile img {
+  width: 100%;
+  height: 100%;
+  max-width: 4.75rem;
+  max-height: 3.6875rem;
+}
+
+.landing-logo-mobile.active {
+  display: block;
+}
